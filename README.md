@@ -6,7 +6,7 @@ Aplikasi GUI sederhana berbasis **Java Swing** yang menampilkan form biodata mah
 
 | | |
 |---|---|
-| **Nama** | Nabil |
+| **Nama** | Nabil Naufal Anugrah|
 | **NIM** | `[F1D02510127]` |
 | **Mata Kuliah** | Pemrograman Berorientasi Objek |
 | **Topik** | Latihan/Eksplorasi Materi GUI pada Java |
