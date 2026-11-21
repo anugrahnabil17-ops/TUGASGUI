@@ -19,11 +19,10 @@ Program ini membuat satu jendela berisi form dengan tiga isian (Nama, NIM, Jurus
 - Tombol **Reset** mengosongkan semua isian.
 - Aksi tombol ditangani dengan *Event Listener* (`ActionListener`).
 
-## Screenshot
+## TAMPILAN PROGRAM
 
-### 1. Tampilan awal
 
-![Tampilan awal](screenshots/tampilan-awal.png)
+![Tampilan awal](TUGASPBO.png)
 
 ## Struktur Komponen
 
