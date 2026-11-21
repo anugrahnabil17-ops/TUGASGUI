@@ -1,4 +1,3 @@
-# TUGASGUI
 # Form Biodata (Java Swing)
 
 Aplikasi GUI sederhana berbasis **Java Swing** yang menampilkan form biodata mahasiswa. Dibuat untuk mata kuliah **Pemrograman Berorientasi Objek (PBO)**, Pertemuan 10: *Graphical User Interface (GUI) di Java*.
@@ -8,29 +7,23 @@ Aplikasi GUI sederhana berbasis **Java Swing** yang menampilkan form biodata mah
 | | |
 |---|---|
 | **Nama** | Nabil |
-| **NIM** | F1D02510127|
+| **NIM** | `[F1D02510127]` |
 | **Mata Kuliah** | Pemrograman Berorientasi Objek |
-| **Topik** | GUI Java (Swing) |
+| **Topik** | Latihan/Eksplorasi Materi GUI pada Java |
 
 ## Deskripsi
 
-Program ini membuat satu jendela berisi form dengan tiga isian (Nama, NIM, Jurusan) dan dua tombol (Simpan dan Reset). Fokusnya adalah penerapan komponen dan layout manager Swing, bukan pemrosesan data.
+Program ini membuat satu jendela berisi form dengan tiga isian (Nama, NIM, Jurusan) dan dua tombol (Simpan dan Reset).
 
-> **Catatan:** Tombol Simpan dan Reset hanya ditampilkan dan belum memiliki aksi, karena materi *Event Handling* dibahas pada pertemuan berikutnya.
+- Tombol **Simpan** memeriksa isian. Jika ada yang kosong, muncul dialog peringatan. Jika semua terisi, data ditampilkan lewat dialog.
+- Tombol **Reset** mengosongkan semua isian.
+- Aksi tombol ditangani dengan *Event Listener* (`ActionListener`).
 
-## Tampilan
+## Screenshot
 
-```
-┌───────────── Form Biodata ──────────────┐
-│              FORM BIODATA               │   ← NORTH  (JLabel)
-│                                         │
-│   Nama     [NABIL NAUFAL ANUGRAH__]     │
-│   NIM      [F1D02510127___________]     │   ← CENTER (JPanel, GridLayout 3x2)
-│   Jurusan  [INFORMATIKA___________]     │
-│                                         │
-│          [ Simpan ]  [ Reset ]          │   ← SOUTH  (JPanel, FlowLayout)
-└─────────────────────────────────────────┘
-```
+### 1. Tampilan awal
+
+![Tampilan awal](screenshots/tampilan-awal.png)
 
 ## Struktur Komponen
 
@@ -47,18 +40,27 @@ JFrame
                   └─ JButton "Reset"
 ```
 
+## Pemenuhan Ketentuan Latihan
+
+| Yang diminta | Penerapan di kode |
+|---|---|
+| Top-level Container | `JFrame` sebagai jendela utama |
+| Intermediate Container | `JPanel` (`panelForm` dan `panelTombol`) |
+| Atomic Component | `JLabel`, `JTextField`, `JButton` |
+| Layout Classes (minimal 2) | `BorderLayout`, `GridLayout`, `FlowLayout` |
+| Event Listener | `implements ActionListener` dan override `actionPerformed()` |
+
 ## Konsep yang Digunakan
 
 | Konsep | Penerapan di kode |
 |---|---|
-| Top-level container | `JFrame` sebagai jendela utama |
 | Content pane | `frame.getContentPane()` untuk mengatur layout dan menambah komponen |
-| Atomic component | `JLabel`, `JTextField`, `JButton` |
-| Intermediate container | `JPanel` untuk mengelompokkan komponen |
 | `BorderLayout` | Tata letak utama jendela (NORTH, CENTER, SOUTH) |
 | `GridLayout` | Tata letak form (3 baris x 2 kolom) |
 | `FlowLayout` | Tata letak default `JPanel` untuk barisan tombol |
 | Konstruktor | `new JFrame(...)`, `new JLabel(...)`, `new GridLayout(...)`, dan lainnya |
+| Interface | `ActionListener` dengan method `actionPerformed()` yang wajib di-override |
+| Dialog | `JOptionPane.showMessageDialog(...)` |
 
 ## Persyaratan
 
@@ -89,12 +91,17 @@ java FormBiodata
 
 > Nama file harus `FormBiodata.java` karena nama class publiknya adalah `FormBiodata`.
 
-## Struktur Proyek
+## Struktur Repositori
 
 ```
-FormBiodata/
+PBO-GUI-FormBiodata/
 ├── FormBiodata.java
-└── README.md
+├── README.md
+└── screenshots/
+    ├── tampilan-awal.png
+    ├── peringatan-kosong.png
+    ├── data-tersimpan.png
+    └── setelah-reset.png
 ```
 
 ## Penjelasan Singkat Kode
@@ -102,7 +109,9 @@ FormBiodata/
 1. **Membuat jendela:** `JFrame` dibuat dengan judul "Form Biodata", dan `EXIT_ON_CLOSE` membuat program berhenti saat jendela ditutup.
 2. **Mengatur layout:** `BorderLayout(5, 5)` dipasang pada content pane.
 3. **Membuat komponen:** judul, tiga label, tiga kolom isian, dan dua tombol.
-4. **Mengelompokkan:** `panelForm` (`GridLayout 3x2`) untuk label dan isian, `panelTombol` (`FlowLayout`) untuk tombol.
-5. **Menyusun:** judul di NORTH, form di CENTER, tombol di SOUTH.
-6. **Menampilkan:** ukuran jendela 350 x 250 piksel, lalu `setVisible(true)`.
+4. **Mendaftarkan listener:** tombol didaftarkan dengan `addActionListener(this)`.
+5. **Mengelompokkan:** `panelForm` (`GridLayout 3x2`) untuk label dan isian, `panelTombol` (`FlowLayout`) untuk tombol.
+6. **Menyusun:** judul di NORTH, form di CENTER, tombol di SOUTH.
+7. **Menampilkan:** ukuran jendela 350 x 250 piksel, lalu `setVisible(true)`.
+8. **Menangani klik:** `actionPerformed()` memeriksa tombol mana yang diklik lewat `e.getSource()`, lalu menjalankan aksi Simpan atau Reset.
 
